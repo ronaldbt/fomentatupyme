@@ -4,6 +4,19 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from './app/data/site'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  // Nuxt 4: equivalente a router.trailingSlash: false (Nuxt 2)
+  router: {
+    options: {
+      strict: true,
+    },
+  },
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: 'remove',
+      },
+    },
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@nuxtjs/sitemap', '@nuxtjs/robots'],
   components: {
     dirs: [

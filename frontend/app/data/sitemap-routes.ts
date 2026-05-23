@@ -2,7 +2,7 @@ import { blogPosts } from './blog'
 import { cities } from './cities'
 import { services } from './services'
 import { SEO_HUB_CITIES } from './seo-cities-sitemap'
-import { SITE_URL } from './site'
+import { canonicalUrl } from './site'
 
 export interface SitemapEntry {
   loc: string
@@ -13,8 +13,7 @@ export interface SitemapEntry {
 
 /** URL absoluta canónica (siempre fomentatupyme.cl, nunca localhost) */
 export function sitemapAbsoluteUrl(path: string) {
-  if (path === '/') return `${SITE_URL}/`
-  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+  return canonicalUrl(path)
 }
 
 function withAbsoluteLoc(entry: Omit<SitemapEntry, 'loc'> & { loc: string }): SitemapEntry {

@@ -8,11 +8,11 @@ import {
   SITE_PHONE,
   SITE_SOCIAL,
   SITE_URL,
+  canonicalUrl,
 } from './site'
 
 export function absoluteUrl(path: string) {
-  if (!path || path === '/') return `${SITE_URL}/`
-  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+  return canonicalUrl(path)
 }
 
 export function getLocalBusinessSchema() {

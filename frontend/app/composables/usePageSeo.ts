@@ -1,5 +1,5 @@
 import { buildPageSchemas } from '~/data/schema'
-import { SITE_LOCALE, SITE_NAME, SITE_URL } from '~/data/site'
+import { canonicalUrl, normalizeSitePath, SITE_LOCALE, SITE_NAME } from '~/data/site'
 
 export interface BreadcrumbItem {
   label: string
@@ -17,24 +17,27 @@ export function usePageSeo(options: {
   ogImage?: string
 }) {
   const route = useRoute()
-  const path = options.path ?? route.path
-  const url = path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`
+  // route.path (no route.fullPath): sin query ni hash; normalizeSitePath quita slash final
+  const path = computed(() => normalizeSitePath(options.path ?? route.path))
+  const url = computed(() => canonicalUrl(path.value))
 
-  const schemas = buildPageSchemas({
-    title: options.title,
-    description: options.description,
-    path,
-    pageType: options.pageType,
-    breadcrumbs: options.breadcrumbs,
-    extra: options.jsonLd,
-  })
+  const schemas = computed(() =>
+    buildPageSchemas({
+      title: options.title,
+      description: options.description,
+      path: path.value,
+      pageType: options.pageType,
+      breadcrumbs: options.breadcrumbs,
+      extra: options.jsonLd,
+    }),
+  )
 
   useSeoMeta({
     title: options.title,
     description: options.description,
     ogTitle: options.title,
     ogDescription: options.description,
-    ogUrl: url,
+    ogUrl: () => url.value,
     ogLocale: SITE_LOCALE,
     ogSiteName: SITE_NAME,
     ogType: options.pageType === 'Article' ? 'article' : 'website',
@@ -44,11 +47,13 @@ export function usePageSeo(options: {
 
   useHead({
     htmlAttrs: { lang: SITE_LOCALE },
-    link: [{ rel: 'canonical', href: url }],
-    script: schemas.map((schema, index) => ({
-      type: 'application/ld+json',
-      key: `ld-json-${index}-${String(schema['@type'])}`,
-      innerHTML: JSON.stringify(schema),
-    })),
+    link: computed(() => [{ rel: 'canonical', href: url.value }]),
+    script: computed(() =>
+      schemas.value.map((schema, index) => ({
+        type: 'application/ld+json',
+        key: `ld-json-${index}-${String(schema['@type'])}`,
+        innerHTML: JSON.stringify(schema),
+      })),
+    ),
   })
 }
