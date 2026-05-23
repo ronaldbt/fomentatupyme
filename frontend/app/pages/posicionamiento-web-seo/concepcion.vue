@@ -10,10 +10,17 @@ import { SEO_HUB_PATH } from '~/data/seo-cities'
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Posicionamiento web SEO', to: SEO_HUB_PATH },
+  { label: 'Concepción' },
+]
+
 usePageSeo({
   title: concepcionSeoMeta.title,
   description: concepcionSeoMeta.description,
   path: CONCEPCION_SEO_PATH,
+  breadcrumbs,
   jsonLd: getConcepcionSeoSchema(),
 })
 </script>
@@ -25,13 +32,7 @@ usePageSeo({
     :intro="concepcionSeoMeta.intro"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Posicionamiento web SEO', to: SEO_HUB_PATH },
-          { label: 'Concepción' },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

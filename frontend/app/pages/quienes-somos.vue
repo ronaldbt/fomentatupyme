@@ -3,11 +3,18 @@ import { companyValues, teamMembers } from '~/data/empresa'
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Quiénes somos' },
+]
+
 usePageSeo({
   title: 'Quiénes Somos | Equipo FomentaTuPyme Chile',
   description:
     'Conoce a Juan Pablo Gallardo y Ronald Bravo: comunicación audiovisual y SEO con 15 años de experiencia. Dos emprendedores del Biobío que impulsan pymes.',
   path: '/quienes-somos',
+  pageType: 'AboutPage',
+  breadcrumbs,
 })
 </script>
 
@@ -18,12 +25,7 @@ usePageSeo({
     intro="FomentaTuPyme nace cuando dos emprendedores del sur de Chile — uno del audiovisual, otro del código y el SEO — decidieron unir fuerzas después de impulsar sus propias empresas y ver lo difícil que es encontrar marketing serio sin pagar de más."
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Quiénes somos' },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

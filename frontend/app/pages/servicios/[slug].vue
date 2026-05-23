@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getServiceSchema } from '~/data/schema'
 import { getServiceBySlug } from '~/data/services'
 
 const route = useRoute()
@@ -16,10 +17,23 @@ if (!service) {
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Servicios', to: '/servicios' },
+  { label: service.title },
+]
+
 usePageSeo({
   title: service.metaTitle,
   description: service.metaDescription,
   path: `/servicios/${service.slug}`,
+  breadcrumbs,
+  jsonLd: getServiceSchema({
+    name: service.title,
+    description: service.metaDescription,
+    path: `/servicios/${service.slug}`,
+    serviceType: service.title,
+  }),
 })
 </script>
 
@@ -30,13 +44,7 @@ usePageSeo({
     :intro="service.intro"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Servicios', to: '/servicios' },
-          { label: service.title },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
   <section class="pt-16 md:pt-24 pb-24 md:pb-32">

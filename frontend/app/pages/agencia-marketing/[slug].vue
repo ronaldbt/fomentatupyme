@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getServiceSchema } from '~/data/schema'
 import { getCityBySlug } from '~/data/cities'
 import { getSeoSlugForAgencia, seoCityPath, SEO_HUB_PATH } from '~/data/seo-cities'
 
@@ -12,10 +13,23 @@ if (!city) {
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Agencia marketing', to: '/agencia-marketing' },
+  { label: city.title },
+]
+
 usePageSeo({
   title: city.metaTitle,
   description: city.metaDescription,
   path: `/agencia-marketing/${city.slug}`,
+  breadcrumbs,
+  jsonLd: getServiceSchema({
+    name: `Agencia de marketing en ${city.title}`,
+    description: city.metaDescription,
+    path: `/agencia-marketing/${city.slug}`,
+    serviceType: 'Agencia de Marketing Digital',
+  }),
 })
 
 const seoSlug = getSeoSlugForAgencia(city.slug)
@@ -30,13 +44,7 @@ const seoPath = seoSlug ? seoCityPath(seoSlug) : undefined
     :badge="city.principal ? 'Principal' : undefined"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Ciudades', to: '/agencia-marketing' },
-          { label: city.title },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
   <section class="pt-16 md:pt-24 pb-24 md:pb-32">

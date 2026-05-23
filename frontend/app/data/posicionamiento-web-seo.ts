@@ -1,3 +1,5 @@
+import { getFaqSchema, getServiceSchema } from './schema'
+
 export const SEO_PAGE_PATH = '/posicionamiento-web-seo'
 
 export { getSeoCityHubLinks as seoCityLinks } from './seo-cities'
@@ -73,67 +75,15 @@ export const seoFaqs = [
 ]
 
 export function getSeoPageSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  return getServiceSchema({
     name: 'Posicionamiento Web SEO para Pymes',
     description:
       'Servicio de posicionamiento web SEO para pymes en Los Ángeles, Concepción, Talcahuano y toda la Región del Biobío, Chile. Incluye auditoría SEO, optimización on-page, SEO técnico, contenido y SEO local.',
-    url: 'https://fomentatupyme.cl/posicionamiento-web-seo/',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'FomentaTuPyme',
-      url: 'https://fomentatupyme.cl',
-      telephone: '+56-9-7979-6841',
-      email: 'contacto@fomentatupyme.cl',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Los Ángeles',
-        addressRegion: 'Biobío',
-        addressCountry: 'CL',
-      },
-      areaServed: [
-        {
-          '@type': 'City',
-          name: 'Los Ángeles',
-          containedInPlace: {
-            '@type': 'AdministrativeArea',
-            name: 'Región del Biobío',
-          },
-        },
-        { '@type': 'City', name: 'Concepción' },
-        { '@type': 'City', name: 'Talcahuano' },
-        { '@type': 'City', name: 'Chillán' },
-        { '@type': 'City', name: 'Coronel' },
-      ],
-      priceRange: '$$',
-      sameAs: [
-        'https://www.instagram.com/fomentatupyme',
-        'https://www.tiktok.com/@fomentatupyme',
-      ],
-    },
+    path: SEO_PAGE_PATH,
     serviceType: 'SEO y Posicionamiento Web',
-    areaServed: 'Región del Biobío, Chile',
-    offers: {
-      '@type': 'Offer',
-      description: 'Diagnóstico SEO inicial gratuito para pymes',
-      price: '0',
-      priceCurrency: 'CLP',
-    },
-  }
+  })
 }
 
 export function getSeoFaqSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: seoFaqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  }
+  return getFaqSchema(seoFaqs)
 }

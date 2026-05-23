@@ -16,10 +16,17 @@ if (!city) {
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Posicionamiento web SEO', to: SEO_HUB_PATH },
+  { label: city.cityName },
+]
+
 usePageSeo({
   title: city.metaTitle,
   description: city.metaDescription,
   path: seoCityPath(city.slug),
+  breadcrumbs,
   jsonLd: getSeoCitySchema(city),
 })
 
@@ -33,13 +40,7 @@ const agenciaPath = `/agencia-marketing/${city.agenciaSlug}`
     :intro="city.intro"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Posicionamiento web SEO', to: SEO_HUB_PATH },
-          { label: city.cityName },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

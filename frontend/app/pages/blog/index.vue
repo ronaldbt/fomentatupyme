@@ -1,13 +1,27 @@
 <script setup lang="ts">
+import { getItemListSchema } from '~/data/schema'
 import { blogHubLinks } from '~/data/blog'
 
 definePageMeta({ layout: 'default' })
+
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Blog' },
+]
 
 usePageSeo({
   title: 'Blog de Marketing Digital para Pymes | FomentaTuPyme',
   description:
     'Artículos sobre SEO, Instagram, TikTok y estrategia digital para pymes en Chile. Guías prácticas desde el Biobío.',
   path: '/blog',
+  pageType: 'CollectionPage',
+  breadcrumbs,
+  jsonLd: getItemListSchema({
+    name: 'Blog FomentaTuPyme',
+    description: 'Artículos de marketing digital para pymes.',
+    path: '/blog',
+    items: blogHubLinks.map((p) => ({ name: p.title, url: p.to })),
+  }),
 })
 </script>
 
@@ -18,7 +32,7 @@ usePageSeo({
     intro="Estrategias accionables de SEO, redes sociales y crecimiento digital. Sin relleno — solo lo que puedes aplicar en tu negocio."
   >
     <template #breadcrumbs>
-      <Breadcrumbs :items="[{ label: 'Inicio', to: '/' }, { label: 'Blog' }]" />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
   <section class="pb-24">

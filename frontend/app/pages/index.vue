@@ -6,6 +6,7 @@ usePageSeo({
   description:
     'Somos la agencia de marketing de Concepción, Chile, especializada en hacer crecer tu pyme. Más ventas, más clientes, más visibilidad. ¡Cotiza hoy!',
   path: '/',
+  pageType: 'WebPage',
 })
 
 useHead({

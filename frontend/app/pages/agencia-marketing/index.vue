@@ -1,13 +1,27 @@
 <script setup lang="ts">
+import { getItemListSchema } from '~/data/schema'
 import { citiesHubLinks } from '~/data/cities'
 
 definePageMeta({ layout: 'default' })
+
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Agencia marketing' },
+]
 
 usePageSeo({
   title: 'Agencia de Marketing por Ciudad en el Biobío | FomentaTuPyme',
   description:
     'Marketing digital para pymes en Los Ángeles, Concepción, Talcahuano, Chillán, Coronel y toda la Región del Biobío. SEO local y redes sociales.',
   path: '/agencia-marketing',
+  pageType: 'CollectionPage',
+  breadcrumbs,
+  jsonLd: getItemListSchema({
+    name: 'Agencia de marketing por ciudad',
+    description: 'Páginas locales de FomentaTuPyme en el Biobío.',
+    path: '/agencia-marketing',
+    items: citiesHubLinks.map((c) => ({ name: c.title, url: c.to })),
+  }),
 })
 </script>
 
@@ -18,7 +32,7 @@ usePageSeo({
     intro="Páginas con contenido propio por comuna — no plantillas vacías. Elige tu ciudad y conoce cómo trabajamos SEO, Instagram y TikTok en tu mercado local."
   >
     <template #breadcrumbs>
-      <Breadcrumbs :items="[{ label: 'Inicio', to: '/' }, { label: 'Agencia marketing' }]" />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
   <section class="pb-24">

@@ -1,4 +1,5 @@
 import type { ContentSection, SeoCityPage } from './types'
+import { getServiceSchema } from './schema'
 
 export const SEO_HUB_PATH = '/posicionamiento-web-seo'
 
@@ -158,23 +159,10 @@ export function getSeoCityHubLinks() {
 }
 
 export function getSeoCitySchema(city: SeoCityPage) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  return getServiceSchema({
     name: `Posicionamiento Web SEO en ${city.cityName}`,
     description: city.metaDescription,
-    url: `https://fomentatupyme.cl${seoCityPath(city.slug)}/`,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'FomentaTuPyme',
-      url: 'https://fomentatupyme.cl',
-      telephone: '+56-9-7979-6841',
-      email: 'contacto@fomentatupyme.cl',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: city.cityName,
-    },
+    path: seoCityPath(city.slug),
     serviceType: 'SEO y Posicionamiento Web',
-  }
+  })
 }

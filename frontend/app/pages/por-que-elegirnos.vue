@@ -3,11 +3,17 @@ import { whyChooseUs } from '~/data/empresa'
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Por qué elegirnos' },
+]
+
 usePageSeo({
   title: 'Por Qué Elegirnos | Ventajas FomentaTuPyme',
   description:
     'Ventajas competitivas de FomentaTuPyme: SEO + audiovisual, enfoque pyme del Biobío, emprendedores con experiencia real y resultados medibles. Cotiza hoy.',
   path: '/por-que-elegirnos',
+  breadcrumbs,
 })
 </script>
 
@@ -18,12 +24,7 @@ usePageSeo({
     intro="No somos una agencia genérica. Combinamos comunicación audiovisual y SEO técnico con trato cercano, precios de pyme y foco en la Región del Biobío."
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Por qué elegirnos' },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

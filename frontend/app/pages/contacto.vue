@@ -3,11 +3,18 @@ import { Clock, Mail, MapPin, Phone } from '@lucide/vue'
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Contacto' },
+]
+
 usePageSeo({
   title: 'Contacto y Cotización | FomentaTuPyme',
   description:
     'Cotiza tu estrategia de marketing digital. WhatsApp, teléfono y formulario. Agencia de marketing para pymes en Chile.',
   path: '/contacto',
+  pageType: 'ContactPage',
+  breadcrumbs,
 })
 </script>
 
@@ -18,7 +25,7 @@ usePageSeo({
     intro="Cuéntanos tu ciudad, rubro y objetivo. Te respondemos con una propuesta clara — sin compromiso y sin letra chica."
   >
     <template #breadcrumbs>
-      <Breadcrumbs :items="[{ label: 'Inicio', to: '/' }, { label: 'Contacto' }]" />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

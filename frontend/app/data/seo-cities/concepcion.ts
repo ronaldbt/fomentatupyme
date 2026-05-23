@@ -1,3 +1,5 @@
+import { getServiceSchema } from '../schema'
+
 export const CONCEPCION_SEO_PATH = '/posicionamiento-web-seo/concepcion'
 
 export const concepcionSeoMeta = {
@@ -48,23 +50,10 @@ export const concepcionSeoServiceFeatures = [
 ]
 
 export function getConcepcionSeoSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  return getServiceSchema({
     name: 'Posicionamiento Web SEO en Concepción',
     description: concepcionSeoMeta.description,
-    url: `https://fomentatupyme.cl${CONCEPCION_SEO_PATH}/`,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'FomentaTuPyme',
-      url: 'https://fomentatupyme.cl',
-      telephone: '+56-9-7979-6841',
-      email: 'contacto@fomentatupyme.cl',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: 'Concepción',
-    },
+    path: CONCEPCION_SEO_PATH,
     serviceType: 'SEO y Posicionamiento Web',
-  }
+  })
 }

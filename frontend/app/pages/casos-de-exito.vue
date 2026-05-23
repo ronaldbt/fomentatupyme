@@ -3,11 +3,17 @@ import { caseStudies } from '~/data/empresa'
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Casos de éxito' },
+]
+
 usePageSeo({
   title: 'Casos de Éxito y Proyectos | FomentaTuPyme',
   description:
     'Proyectos de marketing digital y SEO para pymes del Biobío: clínicas, retail, gastronomía y más. Ejemplos de soluciones implementadas por FomentaTuPyme.',
   path: '/casos-de-exito',
+  breadcrumbs,
 })
 </script>
 
@@ -18,12 +24,7 @@ usePageSeo({
     intro="Ejemplos de cómo combinamos SEO, contenido audiovisual y estrategia digital para pymes de Concepción, Los Ángeles, Chillán y el Biobío. Cada caso es distinto; el método es el mismo: medir, ajustar y escalar."
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Casos de éxito' },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

@@ -11,10 +11,17 @@ import {
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Servicios', to: '/servicios' },
+  { label: 'Posicionamiento web SEO' },
+]
+
 usePageSeo({
   title: seoPageMeta.title,
   description: seoPageMeta.description,
   path: SEO_PAGE_PATH,
+  breadcrumbs,
   jsonLd: [getSeoPageSchema(), getSeoFaqSchema()],
 })
 </script>
@@ -26,13 +33,7 @@ usePageSeo({
     :intro="seoPageMeta.intro"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Servicios', to: '/servicios' },
-          { label: 'Posicionamiento web SEO' },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
   </PageHero>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getArticleSchema } from '~/data/schema'
 import { getBlogBySlug } from '~/data/blog'
 
 const route = useRoute()
@@ -11,10 +12,24 @@ if (!post) {
 
 definePageMeta({ layout: 'default' })
 
+const breadcrumbs = [
+  { label: 'Inicio', to: '/' },
+  { label: 'Blog', to: '/blog' },
+  { label: post.title },
+]
+
 usePageSeo({
   title: post.metaTitle,
   description: post.metaDescription,
   path: `/blog/${post.slug}`,
+  pageType: 'Article',
+  breadcrumbs,
+  jsonLd: getArticleSchema({
+    headline: post.h1,
+    description: post.metaDescription,
+    path: `/blog/${post.slug}`,
+    datePublished: post.date,
+  }),
 })
 </script>
 
@@ -25,13 +40,7 @@ usePageSeo({
     :intro="post.intro"
   >
     <template #breadcrumbs>
-      <Breadcrumbs
-        :items="[
-          { label: 'Inicio', to: '/' },
-          { label: 'Blog', to: '/blog' },
-          { label: post.title },
-        ]"
-      />
+      <Breadcrumbs :items="breadcrumbs" />
     </template>
     <p class="text-[10px] font-black uppercase tracking-widest text-white/30 mt-6">
       {{ post.date }}
