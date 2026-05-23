@@ -20,7 +20,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Por qué elegirnos"
-    h1="Marketing digital hecho por quienes ya impulsaron su propia empresa"
+    heading="Marketing digital hecho por quienes ya impulsaron su propia empresa"
     intro="No somos una agencia genérica. Combinamos comunicación audiovisual y SEO técnico con trato cercano, precios de pyme y foco en la Región del Biobío."
   >
     <template #breadcrumbs>

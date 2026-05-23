@@ -31,7 +31,6 @@
             <li><NuxtLink to="/servicios/instagram" class="hover:text-blue-400 text-white/70 transition-colors">Instagram</NuxtLink></li>
             <li><NuxtLink to="/servicios/tiktok" class="hover:text-blue-400 text-white/70 transition-colors">TikTok</NuxtLink></li>
             <li><NuxtLink to="/servicios/redes-sociales" class="hover:text-blue-400 text-white/70 transition-colors">Redes sociales</NuxtLink></li>
-            <li><NuxtLink to="/servicios/estrategia-digital" class="hover:text-blue-400 text-white/70 transition-colors">Estrategia digital</NuxtLink></li>
           </ul>
         </nav>
 
@@ -42,9 +41,6 @@
             <li><NuxtLink to="/agencia-marketing/los-angeles-chile" class="hover:text-blue-400 text-white/70 transition-colors">Los Ángeles</NuxtLink></li>
             <li><NuxtLink to="/agencia-marketing/concepcion" class="hover:text-blue-400 text-white/70 transition-colors">Concepción</NuxtLink></li>
             <li><NuxtLink to="/agencia-marketing/talcahuano" class="hover:text-blue-400 text-white/70 transition-colors">Talcahuano</NuxtLink></li>
-            <li><NuxtLink to="/agencia-marketing/chillan" class="hover:text-blue-400 text-white/70 transition-colors">Chillán</NuxtLink></li>
-            <li><NuxtLink to="/agencia-marketing/coronel" class="hover:text-blue-400 text-white/70 transition-colors">Coronel</NuxtLink></li>
-            <li><NuxtLink to="/agencia-marketing/region-biobio" class="hover:text-blue-400 text-white/70 transition-colors">Región Biobío</NuxtLink></li>
           </ul>
         </nav>
 

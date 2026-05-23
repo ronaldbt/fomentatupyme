@@ -12,7 +12,7 @@ const breadcrumbs = [
 usePageSeo({
   title: 'Agencia de Marketing por Ciudad en el Biobío | FomentaTuPyme',
   description:
-    'Marketing digital para pymes en Los Ángeles, Concepción, Talcahuano, Chillán, Coronel y toda la Región del Biobío. SEO local y redes sociales.',
+    'Marketing digital para pymes en Los Ángeles, Concepción y Talcahuano. SEO local, redes sociales y contenido.',
   path: '/agencia-marketing',
   pageType: 'CollectionPage',
   breadcrumbs,
@@ -28,7 +28,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Ciudades · SEO local"
-    h1="Agencia de marketing en tu ciudad"
+    heading="Agencia de marketing en tu ciudad"
     intro="Páginas con contenido propio por comuna — no plantillas vacías. Elige tu ciudad y conoce cómo trabajamos SEO, Instagram y TikTok en tu mercado local."
   >
     <template #breadcrumbs>

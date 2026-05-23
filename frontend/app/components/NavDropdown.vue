@@ -2,11 +2,15 @@
 import { ChevronDown } from '@lucide/vue'
 import type { HubLink } from '~/data/types'
 
-defineProps<{
-  label: string
-  hubTo: string
-  items: HubLink[]
-}>()
+withDefaults(
+  defineProps<{
+    label: string
+    hubTo: string
+    items: HubLink[]
+    showFooterLink?: boolean
+  }>(),
+  { showFooterLink: true },
+)
 </script>
 
 <template>
@@ -47,6 +51,7 @@ defineProps<{
           </NuxtLink>
         </div>
         <NuxtLink
+          v-if="showFooterLink"
           :to="hubTo"
           class="block px-5 py-3.5 border-t border-white/10 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:bg-white/5 transition-colors"
         >

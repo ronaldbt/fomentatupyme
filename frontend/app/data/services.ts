@@ -21,11 +21,6 @@ export const servicesHubLinks: HubLink[] = [
     description: 'Community management, calendario editorial y respuesta a mensajes.',
     to: '/servicios/redes-sociales',
   },
-  {
-    title: 'Estrategia de marketing digital',
-    description: 'Plan integral: SEO, ads, contenido y métricas en un solo roadmap.',
-    to: '/servicios/estrategia-digital',
-  },
 ]
 
 export const services: ServicePage[] = [
@@ -94,27 +89,6 @@ export const services: ServicePage[] = [
           'Incluimos planificación mensual, aprobación de piezas, publicación programada y monitoreo de mensajes directos y comentarios en horario comercial.',
           'Entregamos reporte con alcance, interacción y recomendaciones para el mes siguiente.',
         ],
-      },
-    ],
-  },
-  {
-    slug: 'estrategia-digital',
-    title: 'Estrategia de marketing digital',
-    keyword: 'estrategia marketing digital pyme',
-    metaTitle: 'Estrategia de Marketing Digital para Pymes | FomentaTuPyme',
-    metaDescription:
-      'Diseñamos estrategia de marketing digital integral: diagnóstico, prioridades, presupuesto y roadmap para hacer crecer tu empresa en el mundo digital.',
-    h1: 'Estrategia de marketing digital a medida',
-    eyebrow: 'Servicio · Estrategia',
-    intro:
-      'Antes de producir contenido o invertir en ads, definimos hacia dónde va tu negocio online: buyer persona, canales, mensajes y KPIs. Una estrategia clara evita gastar en tácticas que no convierten.',
-    sections: [
-      {
-        heading: 'Qué incluye el diagnóstico',
-        paragraphs: [
-          'Revisamos web, redes, competencia local y embudo de ventas. Priorizamos acciones de mayor impacto en 90 días: SEO, contenido, ads o automatización según tu etapa.',
-        ],
-        list: ['Workshop con el equipo', 'Documento de estrategia', 'Plan trimestral', 'Definición de presupuesto sugerido'],
       },
     ],
   },

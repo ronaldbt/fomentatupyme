@@ -73,7 +73,7 @@ export const whyChooseUs = [
   {
     title: 'Biobío y Ñuble',
     description:
-      'Estrategias para Concepción, Los Ángeles, Talcahuano, Chillán y comunas cercanas — con páginas y keywords locales reales.',
+      'Estrategias para Concepción, Los Ángeles y Talcahuano — con páginas y keywords locales reales.',
   },
 ]
 

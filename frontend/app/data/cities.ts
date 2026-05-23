@@ -3,9 +3,8 @@ import type { CityPage, HubLink } from './types'
 export const citiesHubLinks: HubLink[] = [
   {
     title: 'Los Ángeles',
-    description: 'Ciudad principal · marketing digital local con foco en conversión.',
+    description: 'Marketing digital local con foco en conversión.',
     to: '/agencia-marketing/los-angeles-chile',
-    badge: 'Principal',
   },
   {
     title: 'Concepción',
@@ -16,21 +15,6 @@ export const citiesHubLinks: HubLink[] = [
     title: 'Talcahuano',
     description: 'Puerto y comercio · visibilidad para negocios locales.',
     to: '/agencia-marketing/talcahuano',
-  },
-  {
-    title: 'Chillán',
-    description: 'Retail y servicios · campañas para el Valle Central.',
-    to: '/agencia-marketing/chillan',
-  },
-  {
-    title: 'Coronel',
-    description: 'Industria y barrios · estrategia digital de proximidad.',
-    to: '/agencia-marketing/coronel',
-  },
-  {
-    title: 'Región del Biobío',
-    description: 'Hub regional · cobertura en comunas del gran sur.',
-    to: '/agencia-marketing/region-biobio',
   },
 ]
 
@@ -164,83 +148,6 @@ export const cities: CityPage[] = [
       ],
     },
   ]),
-  cityBase('chillan', 'Chillán', 'agencia marketing Chillán', [
-    {
-      heading: 'Marketing digital para el Valle Central',
-      paragraphs: [
-        'Chillán y su área metropolitana tienen un tejido de pymes fuerte en alimentos, retail y servicios. Muchos negocios aún no explotan Google ni redes con método; hay espacio para crecer con contenido útil y SEO local bien ejecutado.',
-        'Trabajamos con empresas que quieren llegar a Chillán y comunas cercanas sin depender solo de portales tradicionales. Combinamos posicionamiento web, Instagram y estrategia de ads cuando el margen lo permite.',
-      ],
-    },
-    {
-      heading: 'Contenido y autoridad de marca',
-      paragraphs: [
-        'Publicamos artículos y piezas sociales que responden preguntas reales de tus clientes: precios, plazos, garantías. Eso mejora SEO y reduce objeciones antes del contacto.',
-      ],
-    },
-    {
-      heading: 'Planes flexibles para pymes',
-      paragraphs: [
-        'Desde packs de contenido mensual hasta proyectos SEO de seis meses. Siempre con KPIs acordados al inicio: leads, tráfico o alcance según tu objetivo principal.',
-      ],
-    },
-  ]),
-  cityBase('coronel', 'Coronel', 'marketing digital Coronel', [
-    {
-      heading: 'Digitalización de pymes en Coronel',
-      paragraphs: [
-        'Coronel reúne barrios residenciales, industria y comercio de proximidad. Las pymes que invierten en presencia digital destacan frente a competidores que solo usan volantes o grupos de Facebook sin estrategia.',
-        'Ofrecemos SEO local, producción de reels y gestión de redes con tono cercano — importante en comunas donde la confianza personal sigue siendo clave.',
-      ],
-    },
-    {
-      heading: 'Cobertura Biobío sur',
-      paragraphs: [
-        'Si atiendes clientes en Lota, San Pedro o el área de Coronel, geolocalizamos campañas y palabras clave para que no pagues por clics fuera de tu zona de servicio.',
-      ],
-    },
-    {
-      heading: 'Trabajo en equipo con tu negocio',
-      paragraphs: [
-        'Sesiones cortas de planificación, aprobación de guiones por WhatsApp y entrega de métricas en lenguaje simple. Queremos que entiendas qué compras y qué resultado obtienes.',
-      ],
-    },
-  ]),
-  {
-    slug: 'region-biobio',
-    title: 'Región del Biobío',
-    keyword: 'marketing digital región del Biobío',
-    metaTitle: 'Agencia de Marketing Región del Biobío | FomentaTuPyme',
-    metaDescription:
-      'Marketing digital para pymes de la Región del Biobío: Los Ángeles, Concepción, Talcahuano, Chillán, Coronel y más. SEO, redes y estrategia.',
-    h1: 'Marketing digital para pymes del Biobío',
-    eyebrow: 'Región · Biobío',
-    intro:
-      'Cubrimos la Región del Biobío con estrategia digital por ciudad y por rubro. Desde Los Ángeles hasta Coronel, ayudamos a pymes a ser encontradas en Google, generar confianza en redes y convertir interés en ventas.',
-    region: 'Región del Biobío',
-    sections: [
-      {
-        heading: 'Cobertura por comuna',
-        paragraphs: [
-          'Cada comuna tiene competencia y hábitos de búsqueda distintos. Por eso creamos páginas y campañas específicas — no una sola landing genérica para todo el sur.',
-          'Puedes contratar foco en una ciudad o un plan regional si operas en varias comunas.',
-        ],
-        list: ['Los Ángeles', 'Concepción', 'Talcahuano', 'Chillán', 'Coronel'],
-      },
-      {
-        heading: 'Servicios disponibles en toda la región',
-        paragraphs: [
-          'SEO local y nacional, contenido Instagram/TikTok, gestión de redes, estrategia digital y packs de producción audiovisual. Un solo equipo, un solo informe mensual.',
-        ],
-      },
-      {
-        heading: 'Por qué un hub regional ayuda a tu SEO',
-        paragraphs: [
-          'Enlazar desde esta página hacia cada ciudad refuerza la arquitectura del sitio y ayuda a Google a entender tu cobertura territorial — buena práctica para agencias con servicio presencial y remoto en el Biobío.',
-        ],
-      },
-    ],
-  },
 ]
 
 export function getCityBySlug(slug: string) {

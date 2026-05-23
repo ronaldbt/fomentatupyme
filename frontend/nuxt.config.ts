@@ -5,14 +5,26 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  components: {
+    dirs: [
+      { path: '~/components', ignore: ['layout/**'] },
+      { path: '~/components/layout', pathPrefix: false },
+    ],
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: SITE_URL,
+    },
+  },
   site: {
     url: SITE_URL,
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
-    defaultLocale: 'es',
+    defaultLocale: 'es-cl',
   },
   sitemap: {
     sources: ['/api/__sitemap_urls'],
+    excludeAppSources: true,
     exclude: ['/nosotros'],
     defaults: {
       changefreq: 'monthly',
@@ -27,7 +39,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { lang: 'es' },
+      htmlAttrs: { lang: 'es-cl' },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       ],
@@ -36,6 +48,27 @@ export default defineNuxtConfig({
   routeRules: {
     '/servicios/seo': { redirect: { to: '/posicionamiento-web-seo', statusCode: 301 } },
     '/nosotros': { redirect: { to: '/quienes-somos', statusCode: 301 } },
+    '/posicionamiento-web-seo/los-angeles': {
+      redirect: { to: '/posicionamiento-web-seo/los-angeles-chile', statusCode: 301 },
+    },
+    '/servicios/estrategia-digital': {
+      redirect: { to: '/servicios', statusCode: 301 },
+    },
+    '/posicionamiento-web-seo/chillan': {
+      redirect: { to: '/posicionamiento-web-seo', statusCode: 301 },
+    },
+    '/posicionamiento-web-seo/coronel': {
+      redirect: { to: '/posicionamiento-web-seo', statusCode: 301 },
+    },
+    '/agencia-marketing/chillan': {
+      redirect: { to: '/agencia-marketing', statusCode: 301 },
+    },
+    '/agencia-marketing/coronel': {
+      redirect: { to: '/agencia-marketing', statusCode: 301 },
+    },
+    '/agencia-marketing/region-biobio': {
+      redirect: { to: '/agencia-marketing', statusCode: 301 },
+    },
     '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
   },
@@ -47,21 +80,15 @@ export default defineNuxtConfig({
         '/servicios',
         '/posicionamiento-web-seo',
         '/posicionamiento-web-seo/concepcion',
-        '/posicionamiento-web-seo/los-angeles',
         '/posicionamiento-web-seo/talcahuano',
-        '/posicionamiento-web-seo/chillan',
-        '/posicionamiento-web-seo/coronel',
+        '/posicionamiento-web-seo/los-angeles-chile',
         '/servicios/instagram',
         '/servicios/tiktok',
         '/servicios/redes-sociales',
-        '/servicios/estrategia-digital',
         '/agencia-marketing',
         '/agencia-marketing/los-angeles-chile',
         '/agencia-marketing/concepcion',
         '/agencia-marketing/talcahuano',
-        '/agencia-marketing/chillan',
-        '/agencia-marketing/coronel',
-        '/agencia-marketing/region-biobio',
         '/blog',
         '/blog/como-posicionar-pyme-en-google',
         '/quienes-somos',

@@ -12,7 +12,7 @@ const breadcrumbs = [
 usePageSeo({
   title: 'Servicios de Marketing Digital para Pymes | FomentaTuPyme',
   description:
-    'SEO, Instagram, TikTok, gestión de redes y estrategia digital para pymes en Chile. Elige el servicio que tu negocio necesita.',
+    'SEO, Instagram, TikTok y gestión de redes para pymes en Chile. Elige el servicio que tu negocio necesita.',
   path: '/servicios',
   pageType: 'CollectionPage',
   breadcrumbs,
@@ -28,7 +28,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Servicios"
-    h1="Marketing digital que convierte"
+    heading="Marketing digital que convierte"
     intro="Cada servicio está pensado para un objetivo claro: más visibilidad, más contenido que vende o un plan integral. Máximo dos clics desde aquí hasta el detalle."
   >
     <template #breadcrumbs>

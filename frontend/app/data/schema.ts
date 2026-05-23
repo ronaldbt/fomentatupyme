@@ -39,8 +39,6 @@ export function getLocalBusinessSchema() {
       { '@type': 'City', name: 'Concepción' },
       { '@type': 'City', name: 'Los Ángeles' },
       { '@type': 'City', name: 'Talcahuano' },
-      { '@type': 'City', name: 'Chillán' },
-      { '@type': 'City', name: 'Coronel' },
     ],
     sameAs: SITE_SOCIAL,
   }

@@ -21,7 +21,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Quiénes somos"
-    h1="Dos amigos, dos oficios, una misma meta: que tu pyme crezca"
+    heading="Dos amigos, dos oficios, una misma meta: que tu pyme crezca"
     intro="FomentaTuPyme nace cuando dos emprendedores del sur de Chile — uno del audiovisual, otro del código y el SEO — decidieron unir fuerzas después de impulsar sus propias empresas y ver lo difícil que es encontrar marketing serio sin pagar de más."
   >
     <template #breadcrumbs>

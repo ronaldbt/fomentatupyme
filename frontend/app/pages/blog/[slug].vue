@@ -36,7 +36,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Blog"
-    :h1="post.h1"
+    :heading="post.h1"
     :intro="post.intro"
   >
     <template #breadcrumbs>

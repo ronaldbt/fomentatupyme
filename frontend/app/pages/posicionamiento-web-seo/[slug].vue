@@ -36,7 +36,7 @@ const agenciaPath = `/agencia-marketing/${city.agenciaSlug}`
 <template>
   <PageHero
     :eyebrow="city.eyebrow"
-    :h1="city.h1"
+    :heading="city.h1"
     :intro="city.intro"
   >
     <template #breadcrumbs>

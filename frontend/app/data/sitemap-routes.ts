@@ -2,6 +2,7 @@ import { blogPosts } from './blog'
 import { cities } from './cities'
 import { services } from './services'
 import { SEO_HUB_CITIES } from './seo-cities-sitemap'
+import { SITE_URL } from './site'
 
 export interface SitemapEntry {
   loc: string
@@ -10,11 +11,23 @@ export interface SitemapEntry {
   priority?: number
 }
 
+/** URL absoluta canónica (siempre fomentatupyme.cl, nunca localhost) */
+export function sitemapAbsoluteUrl(path: string) {
+  if (path === '/') return `${SITE_URL}/`
+  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+}
+
+function withAbsoluteLoc(entry: Omit<SitemapEntry, 'loc'> & { loc: string }): SitemapEntry {
+  return { ...entry, loc: sitemapAbsoluteUrl(entry.loc) }
+}
+
 const STATIC_ROUTES: SitemapEntry[] = [
   { loc: '/', changefreq: 'weekly', priority: 1 },
   { loc: '/servicios', changefreq: 'weekly', priority: 0.9 },
   { loc: '/posicionamiento-web-seo', changefreq: 'weekly', priority: 0.9 },
   { loc: '/posicionamiento-web-seo/concepcion', changefreq: 'weekly', priority: 0.85 },
+  { loc: '/posicionamiento-web-seo/talcahuano', changefreq: 'weekly', priority: 0.85 },
+  { loc: '/posicionamiento-web-seo/los-angeles-chile', changefreq: 'weekly', priority: 0.85 },
   { loc: '/agencia-marketing', changefreq: 'weekly', priority: 0.9 },
   { loc: '/blog', changefreq: 'weekly', priority: 0.8 },
   { loc: '/quienes-somos', changefreq: 'monthly', priority: 0.7 },
@@ -35,7 +48,7 @@ export function getSitemapEntries(): SitemapEntry[] {
       changefreq: 'monthly' as const,
       priority: c.principal ? 0.85 : 0.75,
     })),
-    ...SEO_HUB_CITIES.filter((slug) => slug !== 'concepcion').map((slug) => ({
+    ...SEO_HUB_CITIES.map((slug) => ({
       loc: `/posicionamiento-web-seo/${slug}`,
       changefreq: 'monthly' as const,
       priority: 0.75,
@@ -48,5 +61,5 @@ export function getSitemapEntries(): SitemapEntry[] {
     })),
   ]
 
-  return [...STATIC_ROUTES, ...dynamic]
+  return [...STATIC_ROUTES, ...dynamic].map(withAbsoluteLoc)
 }

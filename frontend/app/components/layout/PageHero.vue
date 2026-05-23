@@ -1,7 +1,8 @@
 <script setup lang="ts">
 defineProps<{
   eyebrow: string
-  h1: string
+  /** Título principal visible en el hero */
+  heading: string
   intro: string
   badge?: string
 }>()
@@ -22,7 +23,7 @@ defineProps<{
           </span>
         </div>
         <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.95] mb-10">
-          {{ h1 }}
+          {{ heading }}
         </h1>
         <p class="text-lg md:text-xl text-white/50 leading-relaxed">
           {{ intro }}

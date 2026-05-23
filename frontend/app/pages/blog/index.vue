@@ -28,7 +28,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Blog"
-    h1="Contenido y guías para pymes"
+    heading="Contenido y guías para pymes"
     intro="Estrategias accionables de SEO, redes sociales y crecimiento digital. Sin relleno — solo lo que puedes aplicar en tu negocio."
   >
     <template #breadcrumbs>

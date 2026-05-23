@@ -3,9 +3,9 @@ import { getServiceSchema } from '../schema'
 export const CONCEPCION_SEO_PATH = '/posicionamiento-web-seo/concepcion'
 
 export const concepcionSeoMeta = {
-  title: 'Posicionamiento Web SEO en Concepción | Pymes Biobío | FomentaTuPyme',
+  title: 'Posicionamiento Web SEO en Concepción | Pymes Biobío',
   description:
-    'Sube al top de Google con SEO profesional para tu pyme en Concepción. Más clientes orgánicos, sin pagar anuncios. Diagnóstico gratuito. ¡Cotiza hoy!',
+    'Posicionamiento Web SEO en Concepción. Sube al top de Google con SEO profesional para tu pyme. Más clientes orgánicos, sin pagar anuncios. Diagnóstico gratuito. ¡Cotiza hoy!',
   h1: 'Posicionamiento Web SEO en Concepción para Pymes',
   eyebrow: 'SEO local · Concepción',
   intro:
@@ -47,6 +47,14 @@ export const concepcionSeoServiceFeatures = [
     description:
       'Creamos páginas y artículos optimizados que responden las preguntas reales de tus clientes y refuerzan tu autoridad en Google mes a mes.',
   },
+]
+
+export const concepcionSeoInterlinks = [
+  { label: 'posicionamiento web SEO', to: '/posicionamiento-web-seo' },
+  { label: 'agencia de marketing en Concepción', to: '/agencia-marketing/concepcion' },
+  { label: 'SEO en Los Ángeles', to: '/posicionamiento-web-seo/los-angeles-chile' },
+  { label: 'SEO en Talcahuano', to: '/posicionamiento-web-seo/talcahuano' },
+  { label: 'cotiza aquí', to: '/contacto' },
 ]
 
 export function getConcepcionSeoSchema() {

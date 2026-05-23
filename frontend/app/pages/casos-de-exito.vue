@@ -20,7 +20,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Casos de éxito"
-    h1="Proyectos que fomentan crecimiento real"
+    heading="Proyectos que fomentan crecimiento real"
     intro="Ejemplos de cómo combinamos SEO, contenido audiovisual y estrategia digital para pymes de Concepción, Los Ángeles, Chillán y el Biobío. Cada caso es distinto; el método es el mismo: medir, ajustar y escalar."
   >
     <template #breadcrumbs>

@@ -29,7 +29,7 @@ usePageSeo({
 <template>
   <PageHero
     eyebrow="Posicionamiento web SEO"
-    :h1="seoPageMeta.h1"
+    :heading="seoPageMeta.h1"
     :intro="seoPageMeta.intro"
   >
     <template #breadcrumbs>

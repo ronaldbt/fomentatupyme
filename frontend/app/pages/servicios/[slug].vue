@@ -40,7 +40,7 @@ usePageSeo({
 <template>
   <PageHero
     :eyebrow="service.eyebrow"
-    :h1="service.h1"
+    :heading="service.h1"
     :intro="service.intro"
   >
     <template #breadcrumbs>

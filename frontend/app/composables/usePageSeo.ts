@@ -43,7 +43,7 @@ export function usePageSeo(options: {
   })
 
   useHead({
-    htmlAttrs: { lang: 'es' },
+    htmlAttrs: { lang: SITE_LOCALE },
     link: [{ rel: 'canonical', href: url }],
     script: schemas.map((schema, index) => ({
       type: 'application/ld+json',

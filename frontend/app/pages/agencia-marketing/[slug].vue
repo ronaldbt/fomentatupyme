@@ -39,7 +39,7 @@ const seoPath = seoSlug ? seoCityPath(seoSlug) : undefined
 <template>
   <PageHero
     :eyebrow="city.eyebrow"
-    :h1="city.h1"
+    :heading="city.h1"
     :intro="city.intro"
     :badge="city.principal ? 'Principal' : undefined"
   >

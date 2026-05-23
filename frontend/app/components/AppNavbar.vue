@@ -2,10 +2,10 @@
 import { ChevronDown, Menu, X } from '@lucide/vue'
 import { citiesHubLinks } from '~/data/cities'
 import { empresaNavLinks } from '~/data/empresa-nav'
-import { servicesHubLinks } from '~/data/services'
+import { mainNavServiceGroups } from '~/data/nav-services'
 
 const isOpen = ref(false)
-const mobileExpanded = ref<'servicios' | 'ciudades' | 'empresa' | null>(null)
+const mobileExpanded = ref<'seo' | 'redes' | 'ciudades' | 'empresa' | null>(null)
 const route = useRoute()
 
 function closeMenu() {
@@ -13,14 +13,11 @@ function closeMenu() {
   mobileExpanded.value = null
 }
 
-function toggleMobile(section: 'servicios' | 'ciudades' | 'empresa') {
+function toggleMobile(section: 'seo' | 'redes' | 'ciudades' | 'empresa') {
   mobileExpanded.value = mobileExpanded.value === section ? null : section
 }
 
-const homeAnchors = [
-  { label: 'Calculadora', hash: '#calculadoras' },
-  { label: 'Packs', hash: '#packs' },
-]
+const homeAnchors = [{ label: 'Packs', hash: '#packs' }]
 
 function anchorTo(hash: string) {
   return route.path === '/' ? hash : `/${hash}`
@@ -39,10 +36,15 @@ function anchorTo(hash: string) {
         </NuxtLink>
 
         <div class="hidden md:flex items-center gap-6 lg:gap-8 text-[11px] uppercase tracking-[0.2em] font-medium">
-          <NavDropdown label="Servicios" hub-to="/servicios" :items="servicesHubLinks" />
-          <NavDropdown label="Ciudades" hub-to="/agencia-marketing" :items="citiesHubLinks" />
-          <NavDropdown label="Empresa" hub-to="/quienes-somos" :items="empresaNavLinks" />
-          <NuxtLink to="/blog" class="text-white hover:text-blue-400 transition-colors">Blog</NuxtLink>
+          <NavGroupDropdown
+            v-for="group in mainNavServiceGroups"
+            :key="group.id"
+            :label="group.label"
+            :to="group.to"
+            :children="group.children"
+          />
+          <NavDropdown label="Ciudades" hub-to="/agencia-marketing" :items="citiesHubLinks" :show-footer-link="false" />
+          <NavDropdown label="Empresa" hub-to="/quienes-somos" :items="empresaNavLinks" :show-footer-link="false" />
           <a
             v-for="item in homeAnchors"
             :key="item.hash"
@@ -85,37 +87,58 @@ function anchorTo(hash: string) {
         class="fixed top-20 left-0 right-0 bottom-0 bg-brand-black z-40 md:hidden overflow-y-auto"
       >
         <div class="px-6 py-8 space-y-2">
-          <div class="border-b border-white/10 pb-4">
-            <button
-              type="button"
-              class="w-full flex items-center justify-between py-3 text-2xl font-black uppercase tracking-tighter"
-              aria-label="Mostrar u ocultar menú de servicios"
-              :aria-expanded="mobileExpanded === 'servicios'"
-              @click="toggleMobile('servicios')"
-            >
-              Servicios
-              <ChevronDown
-                class="w-5 h-5 text-blue-500 transition-transform"
-                :class="{ 'rotate-180': mobileExpanded === 'servicios' }"
-                aria-hidden="true"
-              />
-            </button>
-            <span v-show="mobileExpanded === 'servicios'" class="block pl-4 space-y-1 pb-2">
+          <div
+            v-for="group in mainNavServiceGroups"
+            :key="group.id"
+            class="border-b border-white/10 pb-4"
+          >
+            <div class="flex items-center gap-1">
+              <button
+                v-if="!group.to"
+                type="button"
+                class="flex-1 flex items-center justify-between py-3 text-2xl font-black uppercase tracking-tighter"
+                :aria-expanded="mobileExpanded === group.id"
+                @click="toggleMobile(group.id as 'seo' | 'redes')"
+              >
+                {{ group.label }}
+                <ChevronDown
+                  class="w-5 h-5 text-blue-500 transition-transform"
+                  :class="{ 'rotate-180': mobileExpanded === group.id }"
+                  aria-hidden="true"
+                />
+              </button>
+              <template v-else>
+                <NuxtLink
+                  :to="group.to"
+                  class="flex-1 py-3 text-2xl font-black uppercase tracking-tighter hover:text-blue-500"
+                  @click="closeMenu"
+                >
+                  {{ group.label }}
+                </NuxtLink>
+                <button
+                  type="button"
+                  class="p-3 text-blue-500"
+                  :aria-label="`Ver submenú de ${group.label}`"
+                  :aria-expanded="mobileExpanded === group.id"
+                  @click="toggleMobile('redes')"
+                >
+                  <ChevronDown
+                    class="w-5 h-5 transition-transform"
+                    :class="{ 'rotate-180': mobileExpanded === group.id }"
+                    aria-hidden="true"
+                  />
+                </button>
+              </template>
+            </div>
+            <span v-show="mobileExpanded === group.id" class="block pl-4 space-y-1 pb-2">
               <NuxtLink
-                v-for="item in servicesHubLinks"
-                :key="item.to"
-                :to="item.to"
-                class="block py-2.5 text-sm font-bold uppercase tracking-wider text-white/60 hover:text-blue-500"
+                v-for="child in group.children"
+                :key="`${child.to}-${child.title}`"
+                :to="child.to"
+                class="block py-2 text-sm font-bold uppercase tracking-wider text-white/50 hover:text-blue-500"
                 @click="closeMenu"
               >
-                {{ item.title }}
-              </NuxtLink>
-              <NuxtLink
-                to="/servicios"
-                class="block py-2.5 text-[10px] font-black uppercase tracking-widest text-blue-500"
-                @click="closeMenu"
-              >
-                Ver todos →
+                {{ child.title }}
               </NuxtLink>
             </span>
           </div>
@@ -140,21 +163,10 @@ function anchorTo(hash: string) {
                 v-for="item in citiesHubLinks"
                 :key="item.to"
                 :to="item.to"
-                class="flex items-center gap-2 py-2.5 text-sm font-bold uppercase tracking-wider text-white/60 hover:text-blue-500"
+                class="block py-2.5 text-sm font-bold uppercase tracking-wider text-white/60 hover:text-blue-500"
                 @click="closeMenu"
               >
                 {{ item.title }}
-                <span
-                  v-if="item.badge"
-                  class="text-[8px] font-black bg-blue-600 text-white px-2 py-0.5 rounded-full"
-                >{{ item.badge }}</span>
-              </NuxtLink>
-              <NuxtLink
-                to="/agencia-marketing"
-                class="block py-2.5 text-[10px] font-black uppercase tracking-widest text-blue-500"
-                @click="closeMenu"
-              >
-                Ver todas →
               </NuxtLink>
             </span>
           </div>
@@ -187,11 +199,6 @@ function anchorTo(hash: string) {
             </span>
           </div>
 
-          <NuxtLink
-            to="/blog"
-            class="block py-3 text-2xl font-black uppercase tracking-tighter hover:text-blue-500"
-            @click="closeMenu"
-          >Blog</NuxtLink>
           <NuxtLink
             to="/contacto"
             class="block mt-6 w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm text-center"

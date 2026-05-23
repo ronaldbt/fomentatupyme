@@ -22,7 +22,7 @@ usePageSeo({
   <div>
     <PageHero
       eyebrow="Contacto"
-      h1="Cotiza tu estrategia de marketing digital"
+      heading="Cotiza tu estrategia de marketing digital"
       intro="Cuéntanos tu ciudad, rubro y objetivo. Te respondemos con una propuesta clara, sin compromiso y sin letra chica."
     >
       <template #breadcrumbs>
