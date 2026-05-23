@@ -13,8 +13,11 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/servicios/seo': { redirect: { to: '/posicionamiento-web-seo', statusCode: 301 } },
+    '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+    '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
   },
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       routes: [
         '/',

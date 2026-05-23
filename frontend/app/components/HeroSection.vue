@@ -38,14 +38,23 @@ import { ArrowRight, Play } from '@lucide/vue'
 
         <div class="lg:col-span-5 relative mt-12 lg:mt-0">
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-white/5">
-            <img
-              src="/images/hero_marketing_chile.png"
-              alt="Agencia de marketing digital en Concepción, Chile — FomentaTuPyme"
-              width="800"
-              height="1000"
-              class="w-full aspect-square lg:aspect-[4/5] object-cover"
-              style="filter: grayscale(20%)"
-            >
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/images/hero_marketing_chile-640.webp 640w, /images/hero_marketing_chile.webp 928w"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+              >
+              <img
+                src="/images/hero_marketing_chile.png"
+                alt="Agencia de marketing digital en Concepción, Chile — FomentaTuPyme"
+                width="928"
+                height="661"
+                fetchpriority="high"
+                decoding="async"
+                class="w-full aspect-square lg:aspect-[4/5] object-cover"
+                style="filter: grayscale(20%)"
+              >
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60 pointer-events-none" />
             <div class="absolute bottom-8 left-8 right-8 flex items-center justify-between z-10">
               <div class="text-white">
