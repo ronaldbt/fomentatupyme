@@ -3,6 +3,8 @@
     {
       "site": "fomentatupyme",
       "public": ".output/public",
+      "cleanUrls": true,
+      "trailingSlash": false,
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -15,6 +17,19 @@
             {
               "key": "Cache-Control",
               "value": "public, max-age=31536000, immutable"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/cdn-cgi/**",
+          "headers": [
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
             }
           ]
         },
@@ -65,12 +80,6 @@
           "source": "/nosotros",
           "destination": "/quienes-somos",
           "type": 301
-        }
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
         }
       ]
     },

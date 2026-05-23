@@ -13,11 +13,15 @@ const issues = []
 const passes = []
 
 function readHtml(routePath) {
-  const file =
-    routePath === '/'
-      ? join(publicDir, 'index.html')
-      : join(publicDir, routePath.replace(/^\//, ''), 'index.html')
-  if (!existsSync(file)) return null
+  if (routePath === '/') {
+    const root = join(publicDir, 'index.html')
+    return existsSync(root) ? readFileSync(root, 'utf8') : null
+  }
+  const relative = routePath.replace(/^\//, '')
+  const flat = join(publicDir, `${relative}.html`)
+  const folder = join(publicDir, relative, 'index.html')
+  const file = existsSync(flat) ? flat : existsSync(folder) ? folder : null
+  if (!file) return null
   return readFileSync(file, 'utf8')
 }
 

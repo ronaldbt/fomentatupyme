@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   },
   robots: {
     allow: '/',
-    disallow: ['/api/'],
+    disallow: ['/api/', '/_nuxt/', '/cdn-cgi/'],
     sitemap: `${SITE_URL}/sitemap.xml`,
   },
   app: {
@@ -88,6 +88,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
+      autoSubfolderIndex: false,
       routes: [
         '/',
         '/servicios',
