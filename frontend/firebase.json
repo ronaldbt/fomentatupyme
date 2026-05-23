@@ -60,6 +60,11 @@
           "source": "/servicios/seo",
           "destination": "/posicionamiento-web-seo",
           "type": 301
+        },
+        {
+          "source": "/nosotros",
+          "destination": "/quienes-somos",
+          "type": 301
         }
       ],
       "rewrites": [

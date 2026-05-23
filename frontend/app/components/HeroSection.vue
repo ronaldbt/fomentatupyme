@@ -27,12 +27,12 @@ import { ArrowRight, Play } from '@lucide/vue'
               Comenzar ahora
               <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </NuxtLink>
-            <a
-              href="#packs"
+            <NuxtLink
+              to="/casos-de-exito"
               class="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-white/10 transition-all text-center"
             >
               Casos de Éxito
-            </a>
+            </NuxtLink>
           </div>
         </div>
 

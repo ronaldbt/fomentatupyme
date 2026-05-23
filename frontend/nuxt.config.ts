@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/servicios/seo': { redirect: { to: '/posicionamiento-web-seo', statusCode: 301 } },
+    '/nosotros': { redirect: { to: '/quienes-somos', statusCode: 301 } },
     '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
   },
@@ -38,6 +39,9 @@ export default defineNuxtConfig({
         '/blog',
         '/blog/como-posicionar-pyme-en-google',
         '/nosotros',
+        '/quienes-somos',
+        '/por-que-elegirnos',
+        '/casos-de-exito',
         '/contacto',
       ],
     },

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ChevronDown, Menu, X } from '@lucide/vue'
 import { citiesHubLinks } from '~/data/cities'
+import { empresaNavLinks } from '~/data/empresa-nav'
 import { servicesHubLinks } from '~/data/services'
 
 const isOpen = ref(false)
-const mobileExpanded = ref<'servicios' | 'ciudades' | null>(null)
+const mobileExpanded = ref<'servicios' | 'ciudades' | 'empresa' | null>(null)
 const route = useRoute()
 
 function closeMenu() {
@@ -12,7 +13,7 @@ function closeMenu() {
   mobileExpanded.value = null
 }
 
-function toggleMobile(section: 'servicios' | 'ciudades') {
+function toggleMobile(section: 'servicios' | 'ciudades' | 'empresa') {
   mobileExpanded.value = mobileExpanded.value === section ? null : section
 }
 
@@ -40,8 +41,8 @@ function anchorTo(hash: string) {
         <div class="hidden md:flex items-center gap-6 lg:gap-8 text-[11px] uppercase tracking-[0.2em] font-medium">
           <NavDropdown label="Servicios" hub-to="/servicios" :items="servicesHubLinks" />
           <NavDropdown label="Ciudades" hub-to="/agencia-marketing" :items="citiesHubLinks" />
+          <NavDropdown label="Empresa" hub-to="/quienes-somos" :items="empresaNavLinks" />
           <NuxtLink to="/blog" class="text-white hover:text-blue-400 transition-colors">Blog</NuxtLink>
-          <NuxtLink to="/nosotros" class="text-white hover:text-blue-400 transition-colors hidden lg:inline">Nosotros</NuxtLink>
           <a
             v-for="item in homeAnchors"
             :key="item.hash"
@@ -158,16 +159,39 @@ function anchorTo(hash: string) {
             </span>
           </div>
 
+          <div class="border-b border-white/10 pb-4">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between py-3 text-2xl font-black uppercase tracking-tighter"
+              aria-label="Mostrar u ocultar menú de empresa"
+              :aria-expanded="mobileExpanded === 'empresa'"
+              @click="toggleMobile('empresa')"
+            >
+              Empresa
+              <ChevronDown
+                class="w-5 h-5 text-blue-500 transition-transform"
+                :class="{ 'rotate-180': mobileExpanded === 'empresa' }"
+                aria-hidden="true"
+              />
+            </button>
+            <span v-show="mobileExpanded === 'empresa'" class="block pl-4 space-y-1 pb-2">
+              <NuxtLink
+                v-for="item in empresaNavLinks"
+                :key="item.to"
+                :to="item.to"
+                class="block py-2.5 text-sm font-bold uppercase tracking-wider text-white/60 hover:text-blue-500"
+                @click="closeMenu"
+              >
+                {{ item.title }}
+              </NuxtLink>
+            </span>
+          </div>
+
           <NuxtLink
             to="/blog"
             class="block py-3 text-2xl font-black uppercase tracking-tighter hover:text-blue-500"
             @click="closeMenu"
           >Blog</NuxtLink>
-          <NuxtLink
-            to="/nosotros"
-            class="block py-3 text-2xl font-black uppercase tracking-tighter hover:text-blue-500"
-            @click="closeMenu"
-          >Nosotros</NuxtLink>
           <NuxtLink
             to="/contacto"
             class="block mt-6 w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm text-center"

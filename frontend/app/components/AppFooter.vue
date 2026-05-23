@@ -51,8 +51,10 @@
         <nav aria-label="Sitio" class="space-y-4">
           <p class="text-[10px] font-black uppercase tracking-widest text-white/70">Sitio</p>
           <ul class="space-y-2.5 text-[11px] uppercase tracking-[0.15em] font-bold">
+            <li><NuxtLink to="/quienes-somos" class="hover:text-blue-400 text-white/70 transition-colors">Quiénes somos</NuxtLink></li>
+            <li><NuxtLink to="/por-que-elegirnos" class="hover:text-blue-400 text-white/70 transition-colors">Por qué elegirnos</NuxtLink></li>
+            <li><NuxtLink to="/casos-de-exito" class="hover:text-blue-400 text-white/70 transition-colors">Casos de éxito</NuxtLink></li>
             <li><NuxtLink to="/blog" class="hover:text-blue-400 text-white/70 transition-colors">Blog</NuxtLink></li>
-            <li><NuxtLink to="/nosotros" class="hover:text-blue-400 text-white/70 transition-colors">Nosotros</NuxtLink></li>
             <li><NuxtLink to="/contacto" class="hover:text-blue-400 text-blue-400 transition-colors">Contacto / Cotizar</NuxtLink></li>
           </ul>
         </nav>
