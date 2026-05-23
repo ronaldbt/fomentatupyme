@@ -1,0 +1,42 @@
+{
+  "hosting": [
+    {
+      "site": "fomentatupyme",
+      "public": ".output/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "redirects": [
+        {
+          "source": "/servicios/seo",
+          "destination": "/posicionamiento-web-seo",
+          "type": 301
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "site": "fomentatupyme-redirect",
+      "public": "hosting-www",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "redirects": [
+        {
+          "regex": "/(.*)",
+          "destination": "https://fomentatupyme.cl/:1",
+          "type": 301
+        }
+      ]
+    }
+  ]
+}
