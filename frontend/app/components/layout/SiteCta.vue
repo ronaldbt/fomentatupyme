@@ -1,5 +1,20 @@
 <script setup lang="ts">
 import { SITE_PHONES } from '~/data/site'
+
+withDefaults(
+  defineProps<{
+    heading?: string
+    text?: string
+    buttonLabel?: string
+    buttonTo?: string
+  }>(),
+  {
+    heading: 'Cotiza tu estrategia de marketing digital hoy',
+    text: 'Cuéntanos tu ciudad y rubro. Te respondemos con un plan claro y presupuesto sin letra chica.',
+    buttonLabel: 'Contactar',
+    buttonTo: '/contacto',
+  },
+)
 </script>
 
 <template>
@@ -8,18 +23,18 @@ import { SITE_PHONES } from '~/data/site'
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 p-10 bg-blue-600 rounded-[2rem]">
         <div class="max-w-xl">
           <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">
-            Cotiza tu estrategia de marketing digital hoy
+            {{ heading }}
           </h2>
           <p class="text-blue-100 text-sm leading-relaxed">
-            Cuéntanos tu ciudad y rubro. Te respondemos con un plan claro y presupuesto sin letra chica.
+            {{ text }}
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 shrink-0">
           <NuxtLink
-            to="/contacto"
+            :to="buttonTo"
             class="bg-black text-white px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-zinc-900 transition-all text-center"
           >
-            Contactar
+            {{ buttonLabel }}
           </NuxtLink>
           <div class="flex flex-col gap-2 shrink-0">
             <a
