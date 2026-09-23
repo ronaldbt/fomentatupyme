@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { SITE_PHONES } from '~/data/site'
+</script>
+
 <template>
   <footer class="bg-brand-black pt-20 md:pt-24 pb-12 md:pb-16 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,8 +18,8 @@
           <address class="not-italic text-white/60 text-sm leading-relaxed space-y-2">
             <p class="font-black uppercase tracking-widest text-white/70 text-[10px]">Fomenta Tu Pyme</p>
             <p>Concepción, Región del Biobío, Chile</p>
-            <p>
-              <a href="tel:+56979796841" class="hover:text-blue-400 transition-colors">+56 9 7979 6841</a>
+            <p v-for="phone in SITE_PHONES" :key="phone.tel">
+              <a :href="`tel:${phone.tel}`" class="hover:text-blue-400 transition-colors">{{ phone.display }}</a>
             </p>
             <p>
               <a href="mailto:contacto@fomentatupyme.cl" class="hover:text-blue-400 transition-colors">contacto@fomentatupyme.cl</a>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Clock, Mail, MapPin, Phone } from '@lucide/vue'
+import { SITE_PHONES } from '~/data/site'
 
 definePageMeta({ layout: 'default' })
 
@@ -50,15 +51,19 @@ usePageSeo({
 
             <div class="space-y-6">
               <a
-                href="tel:+56979796841"
+                v-for="(phone, index) in SITE_PHONES"
+                :key="phone.tel"
+                :href="`tel:${phone.tel}`"
                 class="flex items-start gap-5 group p-4 -mx-4 rounded-2xl hover:bg-white/[0.04] transition-colors"
               >
                 <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                   <Phone class="w-5 h-5" />
                 </span>
                 <span>
-                  <span class="block text-[10px] font-black uppercase tracking-widest text-blue-500 mb-1">Teléfono / WhatsApp</span>
-                  <span class="text-xl font-black group-hover:text-blue-400 transition-colors">+56 9 7979 6841</span>
+                  <span class="block text-[10px] font-black uppercase tracking-widest text-blue-500 mb-1">
+                    {{ index === 0 ? 'Teléfono / WhatsApp' : 'Teléfono' }}
+                  </span>
+                  <span class="text-xl font-black group-hover:text-blue-400 transition-colors">{{ phone.display }}</span>
                 </span>
               </a>
 

@@ -1,75 +1,108 @@
 <script setup lang="ts">
-import { ArrowRight, Play } from '@lucide/vue'
+import { ArrowRight } from '@lucide/vue'
+import { homeHero } from '~/data/home'
+
+const barHeights = [34, 52, 41, 66, 58, 80, 72, 96]
 </script>
 
 <template>
-  <section class="relative pt-40 pb-20 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2 bg-white/5 text-blue-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-white/10">
-            <span>Concepción, Biobío · Chile</span>
+  <section class="relative pt-32 pb-20 lg:pt-36 overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-x-[-10%] top-[-20%] h-[70%] bg-[radial-gradient(600px_380px_at_75%_20%,rgba(37,99,235,0.22),transparent_70%)]"
+      aria-hidden="true"
+    />
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-14 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/5 text-blue-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.25em] mb-6 border border-white/10">
+            <span aria-hidden="true">●</span>
+            {{ homeHero.eyebrow }}
           </div>
-          <h1 class="text-xl sm:text-2xl font-black uppercase tracking-tight leading-snug mb-6 text-white/90 max-w-xl">
-            Agencia de Marketing en Concepción, Chile — Haz Crecer Tu Pyme
+          <h1 class="text-xl sm:text-2xl font-black tracking-tight leading-snug mb-6 text-white/90 max-w-xl">
+            {{ homeHero.h1 }}
           </h1>
-          <p class="text-[70px] sm:text-[100px] lg:text-[120px] font-black leading-[0.85] tracking-tighter uppercase mb-8" aria-hidden="true">
-            Impulsa<br><span class="text-stroke">Tu Pyme</span>
+          <p
+            class="text-[clamp(3.5rem,11vw,7.5rem)] font-black leading-[0.85] tracking-tighter uppercase mb-8 select-none"
+            aria-hidden="true"
+          >
+            {{ homeHero.displayLine1 }}<br><span class="text-stroke">{{ homeHero.displayLine2 }}</span>
           </p>
-          <p class="text-lg text-white/60 mb-12 max-w-md leading-relaxed">
-            Transformamos empresas de Concepción en referentes digitales con estrategias de alto impacto visual y posicionamiento inteligente.
+          <p class="text-lg text-white/60 mb-10 max-w-xl leading-relaxed">
+            {{ homeHero.lead }}
           </p>
-          <div class="flex flex-col sm:flex-row gap-6">
+          <div class="flex flex-col sm:flex-row flex-wrap gap-5 mb-10">
             <NuxtLink
               to="/contacto"
-              class="bg-blue-600 text-white px-10 py-5 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-blue-500/30"
+              class="inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/30 group"
             >
-              Comenzar ahora
+              Solicitar cotización gratis
               <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </NuxtLink>
             <NuxtLink
               to="/casos-de-exito"
-              class="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-white/10 transition-all text-center"
+              class="inline-flex items-center justify-center bg-white/5 text-white border border-white/20 px-10 py-5 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:border-blue-400 hover:text-blue-400 transition-all"
             >
-              Casos de Éxito
+              Ver casos de éxito
             </NuxtLink>
+          </div>
+          <div class="flex flex-wrap gap-8" aria-label="Indicadores de la agencia">
+            <div v-for="item in homeHero.proof" :key="item.label">
+              <strong class="block font-mono text-xl font-bold text-white">{{ item.value }}</strong>
+              <span class="text-[9px] font-black uppercase tracking-[0.22em] text-white/40">{{ item.label }}</span>
+            </div>
           </div>
         </div>
 
-        <div class="lg:col-span-5 relative mt-12 lg:mt-0">
-          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-white/5">
-            <picture>
-              <source
-                type="image/webp"
-                srcset="/images/hero_marketing_chile-640.webp 640w, /images/hero_marketing_chile.webp 928w"
-                sizes="(max-width: 1024px) 100vw, 42vw"
-              >
-              <img
-                src="/images/hero_marketing_chile.png"
-                alt="Agencia de marketing digital en Concepción, Chile — FomentaTuPyme"
-                width="928"
-                height="661"
-                fetchpriority="high"
-                decoding="async"
-                class="w-full aspect-square lg:aspect-[4/5] object-cover"
-                style="filter: grayscale(20%)"
-              >
-            </picture>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60 pointer-events-none" />
-            <div class="absolute bottom-8 left-8 right-8 flex items-center justify-between z-10">
-              <div class="text-white">
-                <p class="text-[10px] font-black uppercase tracking-widest text-white/50 mb-1">Audiovisual</p>
-                <p class="text-2xl font-bold italic tracking-tight">FomentaTuPyme AV</p>
+        <div class="relative min-h-[420px] lg:min-h-[600px]" aria-hidden="true">
+          <div class="absolute top-[8%] right-[6%] w-[min(330px,86%)] p-6 rounded-3xl bg-[#0f0f0f]/90 border border-white/20 shadow-2xl backdrop-blur-sm">
+            <div class="flex items-center justify-between mb-5">
+              <b class="text-[11px] font-black uppercase tracking-[0.22em]">FomentaTuPyme AV</b>
+              <span class="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.2em] text-blue-300">
+                <i class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse-dot" />
+                En vivo
+              </span>
+            </div>
+            <div class="flex items-end gap-1.5 h-24 mb-5">
+              <i
+                v-for="(h, idx) in barHeights"
+                :key="idx"
+                class="flex-1 rounded-t bg-gradient-to-t from-blue-700 to-blue-400 origin-bottom animate-bar-grow"
+                :class="idx % 2 ? 'opacity-55' : ''"
+                :style="{ height: `${h}%`, animationDelay: `${idx * 0.05}s` }"
+              />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                <b class="font-mono text-base block">1.5M+</b>
+                <span class="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">Views</span>
               </div>
-              <div class="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20 text-white flex items-center justify-center">
-                <Play class="w-5 h-5 fill-white stroke-white" />
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                <b class="font-mono text-base block">3.2x</b>
+                <span class="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">ROI proy.</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                <b class="font-mono text-base block">Top 3</b>
+                <span class="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">Google Maps*</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                <b class="font-mono text-base block">24/7</b>
+                <span class="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">Tracking</span>
               </div>
             </div>
           </div>
-
-          <div class="absolute -top-6 -right-6 bg-blue-600 p-8 rounded-3xl shadow-2xl hidden md:block animate-float z-10">
-            <div class="text-4xl font-black italic">+1.5M</div>
-            <div class="text-[10px] font-black uppercase tracking-widest text-blue-100 opacity-80 mt-1">Views Generadas</div>
+          <div class="absolute left-0 bottom-[18%] lg:bottom-[84px] flex items-center gap-3 px-5 py-4 rounded-3xl bg-[#0f0f0f]/90 border border-white/20 shadow-xl animate-float-slow">
+            <span class="w-10 h-10 rounded-xl bg-blue-600/20 grid place-items-center text-blue-400 text-sm">▶</span>
+            <span>
+              <b class="block text-[11px] uppercase tracking-wider">Video corporativo</b>
+              <span class="text-[9px] font-black uppercase tracking-wider text-white/40">4K · Guion · Edición</span>
+            </span>
+          </div>
+          <div class="absolute right-0 bottom-0 flex items-center gap-3 px-5 py-4 rounded-3xl bg-[#0f0f0f]/90 border border-white/20 shadow-xl animate-float">
+            <span class="w-10 h-10 rounded-xl bg-blue-600/20 grid place-items-center text-blue-400 text-sm">⌕</span>
+            <span>
+              <b class="block text-[11px] uppercase tracking-wider">SEO Local activo</b>
+              <span class="text-[9px] font-black uppercase tracking-wider text-white/40">Concepción · Biobío</span>
+            </span>
           </div>
         </div>
       </div>

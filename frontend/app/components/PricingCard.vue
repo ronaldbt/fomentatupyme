@@ -32,7 +32,6 @@ const cn = useCn()
       <div class="flex items-baseline gap-2">
         <span class="text-sm font-black opacity-50">$</span>
         <span class="text-5xl font-black tracking-tighter font-mono">{{ price }}</span>
-        <span class="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">/ mensual</span>
       </div>
     </div>
 
@@ -47,16 +46,16 @@ const cn = useCn()
       </li>
     </ul>
 
-    <button
-      type="button"
+    <NuxtLink
+      to="/contacto"
       :class="cn(
-        'w-full py-5 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] transition-all',
+        'w-full py-5 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] transition-all text-center block',
         popular
           ? 'bg-black text-white hover:bg-zinc-900'
           : 'bg-white/5 text-white border border-white/10 hover:bg-white/10',
       )"
     >
       {{ cta }}
-    </button>
+    </NuxtLink>
   </div>
 </template>

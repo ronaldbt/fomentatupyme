@@ -20,8 +20,9 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@nuxtjs/sitemap', '@nuxtjs/robots'],
   components: {
     dirs: [
-      { path: '~/components', ignore: ['layout/**'] },
+      { path: '~/components', ignore: ['layout/**', 'home/**'] },
       { path: '~/components/layout', pathPrefix: false },
+      { path: '~/components/home', pathPrefix: false },
     ],
   },
   runtimeConfig: {

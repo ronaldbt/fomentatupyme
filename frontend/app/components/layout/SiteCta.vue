@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { SITE_PHONES } from '~/data/site'
+</script>
+
 <template>
   <section class="py-20 border-t border-white/10 bg-white/[0.02]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,12 +21,16 @@
           >
             Contactar
           </NuxtLink>
-          <a
-            href="tel:+56979796841"
-            class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white/20 transition-all text-center"
-          >
-            +56 9 7979 6841
-          </a>
+          <div class="flex flex-col gap-2 shrink-0">
+            <a
+              v-for="phone in SITE_PHONES"
+              :key="phone.tel"
+              :href="`tel:${phone.tel}`"
+              class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white/20 transition-all text-center whitespace-nowrap"
+            >
+              {{ phone.display }}
+            </a>
+          </div>
         </div>
       </div>
     </div>

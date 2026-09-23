@@ -41,7 +41,9 @@ export function usePageSeo(options: {
     ogLocale: SITE_LOCALE,
     ogSiteName: SITE_NAME,
     ogType: options.pageType === 'Article' ? 'article' : 'website',
+    ogImage: options.ogImage,
     twitterCard: 'summary_large_image',
+    twitterImage: options.ogImage,
     robots: options.noindex ? 'noindex, nofollow' : 'index, follow',
   })
 
