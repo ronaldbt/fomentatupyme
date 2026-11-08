@@ -26,7 +26,6 @@ export type SitePhone = {
 
 export const SITE_PHONES: SitePhone[] = [
   { tel: '+56979796841', display: '+56 9 7979 6841' },
-  { tel: '+56974927111', display: '+56 9 7492 7111' },
 ]
 
 /** Teléfono principal (schema, WhatsApp). */
