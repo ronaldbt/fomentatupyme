@@ -6,7 +6,6 @@ import { mainNavServiceGroups } from '~/data/nav-services'
 
 const isOpen = ref(false)
 const mobileExpanded = ref<'seo' | 'redes' | 'ciudades' | 'empresa' | null>(null)
-const route = useRoute()
 
 function closeMenu() {
   isOpen.value = false
@@ -15,12 +14,6 @@ function closeMenu() {
 
 function toggleMobile(section: 'seo' | 'redes' | 'ciudades' | 'empresa') {
   mobileExpanded.value = mobileExpanded.value === section ? null : section
-}
-
-const homeAnchors = [{ label: 'Packs', hash: '#packs' }]
-
-function anchorTo(hash: string) {
-  return route.path === '/' ? hash : `/${hash}`
 }
 </script>
 
@@ -45,12 +38,6 @@ function anchorTo(hash: string) {
           />
           <NavDropdown label="Ciudades" hub-to="/agencia-marketing" :items="citiesHubLinks" :show-footer-link="false" />
           <NavDropdown label="Empresa" hub-to="/quienes-somos" :items="empresaNavLinks" :show-footer-link="false" />
-          <a
-            v-for="item in homeAnchors"
-            :key="item.hash"
-            :href="anchorTo(item.hash)"
-            class="text-white/60 hover:text-blue-400 transition-colors hidden xl:inline"
-          >{{ item.label }}</a>
           <NuxtLink
             to="/contacto"
             class="bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20"
